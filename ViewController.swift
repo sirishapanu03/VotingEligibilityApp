@@ -1,41 +1,70 @@
 //
 //  ViewController.swift
-//  VotingeligibilityApp
+//  ImageDisplay
 //
-//  Created by Panuganti,Sirisha on 9/5/23.
+//  Created by Panuganti,Sirisha on 10/3/23.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
 
-   
-    @IBOutlet weak var outputOL: UILabel!
-    
-    @IBOutlet weak var ageInputOL: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+
+
+    @IBOutlet weak var brandOL: UITextField!
     
-    @IBAction func buttonClick(_ sender: Any) {
+    @IBOutlet weak var modelOL: UITextField!
+    
+    @IBOutlet weak var priceOL: UITextField!
+    
+    @IBOutlet weak var imageOL: UIImageView!
+    
+    
+    @IBOutlet weak var outputOL: UILabel!
+    
+    
+    @IBAction func calcPricewithTax(_ sender: Any) {
         
-        //get input and
+        var brand = brandOL.text!
+        var model = modelOL.text!
+        var price = Double(priceOL.text!) ?? 0
         
-        var age = Double(ageInputOL.text!) ?? 0
         
-        //check for eligibility
-        //assin to output ol
-        if(age<0){
-            outputOL.text = "Enter a valid age"
+        if(brand == "hp"){
+            imageOL.image = UIImage(named: "pic01")
+            
+            var tax = price * (0.10)
+            var totalPrice = price + tax
+            outputOL.text! = "Total price for \(brand) and \(model) is \(totalPrice)"
         }
-        else if(age < 18){
-            outputOL.text = "You are not eligible to vote"
-        }else if(age >= 18){
-            outputOL.text = "Your are eligible to vote"
+        
+        if(brand == "dell"){
+            imageOL.image = UIImage(named: "pic02")
+            var tax = price * (0.09)
+            var totalPrice = price + tax
+            outputOL.text! = "Total price for \(brand) and \(model) is \(totalPrice)"
         }
-       
+        if(brand == "apple"){
+            imageOL.image = UIImage(named: "pic03")
+            var tax = price * (0.12)
+            var totalPrice = price + tax
+            outputOL.text! = "Total price for \(brand) and \(model) is \(totalPrice)"
+        }
+        if(brand == "lenovo"){
+            imageOL.image = UIImage(named: "pic04")
+            var tax = price * (0.11)
+            var totalPrice = price + tax
+            outputOL.text! = "Total price for \(brand) and \(model) is \(totalPrice)"
+        }
     }
+    
+    
+    
+    
+    
 }
 
